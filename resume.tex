@@ -9,23 +9,34 @@
 %\setmonofont{Lucida Sans Typewriter}
 %
 \usepackage{hyperref}
+\usepackage{eso-pic}
+
+% PLACE TEXTBOX, ADDED BY ME FOR CONTACT INFO
+\newcommand{\placebox}[4]{
+  \setbox0=\hbox{#4}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \if#3r
+    \put(\LenToUnit{\paperwidth-#1},\LenToUnit{\paperheight-#2}){\vtop{{\null}\makebox[0pt][r]{\begin{tabular}{r}#4\end{tabular}}}}%
+    \else
+    \put(\LenToUnit{#1},\LenToUnit{\paperheight-#2}){\vtop{{\null}\makebox[0pt][l]{\begin{tabular}{l}#4\end{tabular}}}}%
+    \fi
+  }%
+}%
 \begin{document}
 
-\name{Jonah Brawley}
-%\location{Portland, OR}
-\address{jonahbrawley@gmail.com}
-\address{github.com/jonahbrawley}
-\address{linkedin.com/in/jonahbrawley}
+\name{Jonah Brawley\vspace{1mm}}
+\loc{Portland, OR}
 \begin{resume}
 
-                    
+\placebox{5.65cm}{2.4cm}{r}{jonahbrawley@gmail.com\\linkedin.com/in/jonahbrawley\\github.com/jonahbrawley}
+
 \section{SKILLS}
                     Java, Python, Linux, GitHub, Flutter, Jupyter, Pandas
 
 \section{PROJECTS}
                     {\sl Mobile App ("Fleet")}\\
                     - Self-learned Flutter/Dart to create an app over a period of 12 weeks (Junior Design course)\\
-                    - Used GitHub for version control, taught the group basics of branches/merging/pull requests\\
+                    - Used GitHub for version control, used branching/merges/pull requests\\
                     --- {\bf Specific contributions:}\\
                     --- Signup/Login, Home, Create Trip, and Join Trip screens (UI/UX)\\
                     --- Light/Dark Theme, User Vehicle Settings, and all general interface design\\
@@ -63,6 +74,9 @@
                     - Volunteered in a variety of positions over the course of 5 summers\\
                     - For most recent experience, trained 30 total male and female Counselor in Training (CITs) for the role\\
                     - Mentored 15 guy CITs during ten week-long programs, and evaluated their performance
+
+\section{INTERESTS}
+                    Analog Media, Fashion, Experimental Music, CRTs, Graphic Design
                    
 \end{resume}
 \end{document}

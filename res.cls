@@ -234,23 +234,18 @@
 % this is used to print the name and address at the top of
 % the page with a hline in between
 %
-% MODIFIED BY JONAH
+% MODIFIED BY JONAH, add @loc + @addressthree
 \def\namefont{\LARGE}
+\def\locfont{\large\sl}
 \def\@linename{\begingroup
   \def\\{, }
-  {\namefont\@name}
+  {\namefont\@name\newline}
   % where do you live?
-  \@ifundefined{@addressone}{%
+  %\@ifundefined{@addressone}{%
     % do nothing
-  }{%
-    \leavevmode\hbox to \textwidth
-      {\raggedleft\hskip 9cm\vtop{\hbox{\@addressone} % manual spacing because it wouldn't behave
-		   \hbox{\@addresstwo}
-		   \hbox{\@addressthree}
-		  }\hspace{1cm}%
-      }\par
-  }
-  \vskip 5pt
+  %}
+  {\locfont\@loc}
+  \vskip 6pt
   \fullline
   \vskip 5pt
 \endgroup}
@@ -489,6 +484,9 @@
 %
 \def\name#1{\def\@name{#1}}
 \def\@name{}
+% def loc ADDED BY JONAH
+\def\loc#1{\def\@loc{#1}}
+\def\@loc{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % use this to define your address, this may be called more than once.
